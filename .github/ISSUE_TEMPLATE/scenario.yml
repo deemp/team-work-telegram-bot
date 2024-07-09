@@ -1,23 +1,21 @@
-name: Bug Report
-description: File a bug report.
-title: "[Bug]: "
-labels: ["bug", "triage"]
-projects: ["octo-org/1", "octo-org/44"]
+name: Scenario
+description: Propose a scenario.
+title: "Scenario: "
+labels: []
+
 assignees:
   - octocat
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        Please check the glossary.
   - type: textarea
     id: details
     attributes:
       label: Details
       description: |
-        The "Details" section and these Instructions MUST be kept.
-
-        Before these Instructions, the scenario explanation and details MUST be written.
+        The scenario explanation and details MUST be written.
 
         Links to related issues, PRs, artifacts, files, etc., MAY be included.
 
@@ -26,38 +24,73 @@ body:
       value: "A bug happened!"
     validations:
       required: true
-  - type: dropdown
-    id: version
-    attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-      default: 0
-    validations:
-      required: true
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
   - type: textarea
-    id: logs
+    id: subtasks
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com). 
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
+      label: Subtasks
+      description: |
+        Clear and actionable subtasks MUST be listed in a single-level checkbox list (`Subtask list`) with at least one item.
+
+        Each list item MUST be one of these:
+
+        - A link to an issue.
+          - Example:
+
+            ```text
+            - [ ] https://github.com/team-work-tools/team-work-telegram-bot/issues/42
+            ```
+
+        - An identifier of an issue.
+          - Example:
+
+            ```text
+            - [ ] #42
+            ```
+
+        - A textual description of a subtask (`Textual subtask`).
+          - Rules:
+            - The description MUST NOT:
+              - include checkboxes;
+              - end with a list item.
+
+          - Example:
+          
+            ```text
+            - [ ] Do Foo
+            ```
+
+        If a Textual subtask seems to require its own subtasks, a new Task issue MUST be created for this subtask. The Textual subtask MUST then be replaced with a link to the new issue.
+
+        For each Textual subtask that was worked on, there MUST be evidence of the work.
+
+        - One of these rules MUST be applied as best matches the case:
+          - If the subtask was worked on in a (merged) PR, a link to the PR MUST be provided.
+          - If the subtask requires making a decision, GitHub usernames of the decision-makers, a link to the decision, and the reasoning behind the decision MUST be provided.
+          - If the subtask is about producing or updating an artifact, a (perma)link to that (updated) artifact MUST be provided.
+          - If the subtask was completed for some other reason, that reason MUST be provided.
+        - Evidence MUST be written in one of these formats:
+          - In parentheses after the Textual subtask.
+          - In a sublist under the Textual subtask.
+
+        A subtask is completed when:
+
+        - It is a Textual subtask and the evidence shows the subtask was completed, e.g., the PR was merged, the decision was made, etc.
+        - It is not a Textual subtask and the issue is closed.
+
+        When a subtask is completed, the subtask checkbox in the Subtask list MUST be ticked.
+
+        Example of a Subtask list:
+
+        ```text
+        - [x] Do 42 ({{link to a PR that completed this subtask}})
+        - [x] #42
+        - [x] {{link to the issue #42}}
+        - [x] Decide with developers whether to use Foo or Bar.
+          - @dev1, @dev2 decided to use Foo because Bar can't do blah-blah.
+        - [x] Do Baz.
+          - @dev1 decided to not do Baz due to lack of time.
+        - [ ] Not yet completed
+        ```
+
+        This issue MUST be closed when the Customer agrees the scenario is completed.        
+  
